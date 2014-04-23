@@ -1,7 +1,6 @@
 #include <vector>
 #include <math.h> 
 
-using namespace std;
 namespace N200644 {
 
 class Point {
@@ -19,7 +18,7 @@ public:
 template <typename InputIterator>
 class Polygon {
 private:
-    typedef vector<Point> Points;
+    typedef std::vector<Point> Points;
     Points points;
 public:
     typedef Points::iterator iterator;
@@ -57,8 +56,8 @@ const bool operator==(Point const& lhs, Point const& rhs){
 }
 
 template <typename InputIterator>
-struct K200644 
-{ 
+class K200644 {
+public:
     typedef N200644::Point Point;
     typedef N200644::Polygon<InputIterator> Polygon;
 };
