@@ -1,6 +1,7 @@
 #include <vector>
 #include <math.h> 
 
+
 class Point {
 private:
     double _x, _y;
