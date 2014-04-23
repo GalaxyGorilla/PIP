@@ -129,6 +129,7 @@ bool Polygon::contains( const Point q ){
             
             /* check if q is part of the edge */
             if (q == intersection){
+                /* if yes check the direction vector */
                 if ( diff.normal() * dir <= 0 )
                     ++counter;
                 else;
