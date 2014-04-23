@@ -1,11 +1,14 @@
 #include <vector>
 #include <math.h> 
 
+using namespace std;
+namespace N200644 {
 
 class Point {
 private:
     double _x, _y;
 public:
+    Point() { _x = 0; _y = 0; }
     Point(double x, double y) { _x = x; _y = y; }
     double x() const {return _x;}
     double y() const {return _y;}
@@ -16,7 +19,7 @@ public:
 template <typename InputIterator>
 class Polygon {
 private:
-    typedef std::vector<Point> Points;
+    typedef vector<Point> Points;
     Points points;
 public:
     typedef Points::iterator iterator;
@@ -50,4 +53,13 @@ const bool operator==(Point const& lhs, Point const& rhs){
     else
         return false;
 }
+
+}
+
+template <typename InputIterator>
+struct K200644 
+{ 
+    typedef N200644::Point Point;
+    typedef N200644::Polygon<InputIterator> Polygon;
+};
 

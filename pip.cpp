@@ -3,6 +3,10 @@
 #include <stdlib.h> 
 #include "pip.h"
 
+using namespace N200644;
+using namespace std;
+namespace N200644 {
+
 template <typename InputIterator>
 Polygon<InputIterator>::Polygon(InputIterator first, InputIterator last){
     for(first; first != last; ++first)
@@ -12,7 +16,7 @@ Polygon<InputIterator>::Polygon(InputIterator first, InputIterator last){
 template <typename InputIterator>
 void Polygon<InputIterator>::print(){
     for(int i=0; i<points.size(); ++i)
-        std::cout << "( " <<  points[i].x() << " , " << points[i].y() << " )\n";
+        cout << "( " <<  points[i].x() << " , " << points[i].y() << " )\n";
 }
 
 double Point::len(){
@@ -31,7 +35,7 @@ bool Polygon<InputIterator>::contains( const Point q ){
     Point rand_normal(rand_x, rand_y); 
     Point dir = rand_normal.normal(); 
     rand_normal = (1/rand_normal.len()) * rand_normal ; 
-    std::cout << "Normale: " << rand_normal.x() << " " << rand_normal.y() << std::endl;
+    cout << "Normale: " << rand_normal.x() << " " << rand_normal.y() << endl;
     double rand_rhs = q * rand_normal;
 
     iterator _begin = ++begin();
@@ -57,7 +61,7 @@ bool Polygon<InputIterator>::contains( const Point q ){
             continue;
 
         Point intersection(x_div/divisor, y_div/divisor);
-        std::cout << "Schnitt: " << intersection.x() << " " << intersection.y() << std::endl;
+        cout << "Schnitt: " << intersection.x() << " " << intersection.y() << endl;
 
         /* check if intersection is a vertex and fix the counter */
         if (intersection == *(_begin) ){
@@ -67,7 +71,7 @@ bool Polygon<InputIterator>::contains( const Point q ){
                 continue;
             else{
                 ++counter;
-                std::cout << "Counter: " << counter << std::endl;
+                cout << "Counter: " << counter << endl;
                 continue;
             }
         }
@@ -78,7 +82,7 @@ bool Polygon<InputIterator>::contains( const Point q ){
          * relative to the edge (does the direction go inside or outside the polygon?) */
         Point intersection_diff = intersection - *(_begin-1);
         double check_pos = (intersection_diff * diff) / diff.len();
-        std::cout << "check_pos: " << check_pos << std::endl; 
+        cout << "check_pos: " << check_pos << endl; 
         if( ( check_pos < diff.len() && ( check_pos > 0 ))
             && ( (intersection - q) * dir > 0 )){
             
@@ -93,7 +97,7 @@ bool Polygon<InputIterator>::contains( const Point q ){
             else
                 ++counter;
         }
-        std::cout << "Counter: " << counter << std::endl;
+        cout << "Counter: " << counter << endl;
         
     }
     
@@ -103,3 +107,4 @@ bool Polygon<InputIterator>::contains( const Point q ){
         return false;
 }
 
+}
