@@ -1,16 +1,18 @@
 #include <vector>
-#include <math.h> 
+#include <gmpxx.h>
+
+#define PREC 500
 
 namespace N200644 {
 
 class Point {
 private:
-    double _x, _y;
+    mpf_class _x, _y;
 public:
-    Point() { _x = 0; _y = 0; }
-    Point(double x, double y) { _x = x; _y = y; }
-    double x() const {return _x;}
-    double y() const {return _y;}
+    Point() { _x = mpf_class(0, PREC); mpf_class(0, PREC); }
+    Point(double x, double y) { _x = mpf_class(x, PREC); _y = mpf_class(y, PREC); }
+    mpf_class x() const {return _x;}
+    mpf_class y() const {return _y;}
 };
 
 template <typename InputIterator>
