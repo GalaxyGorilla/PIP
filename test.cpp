@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
             ++locations_iter;
         }
 
-        cout << "Ergebnis: " << counter << " von " << read_querypoints.size() << endl;
+        cout << "Ergebnis: " << counter << " von " << read_querypoints.size() << " [" << ((double)counter)/read_querypoints.size() * 100 << "%]" << endl;
 
     }
 
