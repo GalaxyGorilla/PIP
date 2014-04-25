@@ -1,16 +1,16 @@
 #include <vector>
-#include <math.h> 
+#include <quadmath.h> 
 
 namespace N200644 {
 
 class Point {
 private:
-    long double _x, _y;
+    __float128 _x, _y;
 public:
     Point() { _x = 0; _y = 0; }
-    Point(double x, double y) { _x = (long double) x; _y = (long double) y; }
-    long double x() const {return _x;}
-    long double y() const {return _y;}
+    Point(double x, double y) { _x = x; _y = y; }
+    __float128 x() const {return _x;}
+    __float128 y() const {return _y;}
 };
 
 template <typename InputIterator>
