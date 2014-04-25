@@ -1,6 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <stdlib.h> 
 #include "pip200644.h"
 
 namespace N200644 {
