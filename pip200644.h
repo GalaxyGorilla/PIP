@@ -1,7 +1,7 @@
 #include <vector>
 #include <math.h> 
 #include <gmpxx.h>
-#define PREC 512
+#define PREC 10*1024
 
 namespace N200644 {
 
@@ -10,7 +10,7 @@ private:
     mpf_class _x, _y;
 public:
     Point() { _x = 0; _y = 0; }
-    Point(double x, double y) {  _x = x; _y = y; _x.set_prec (PREC); _y.set_prec (PREC); }
+    Point(double x, double y) {  _x = mpf_class(x, PREC); _y = mpf_class(y, PREC); }
     mpf_class x() const {return _x;}
     mpf_class y() const {return _y;}
 };

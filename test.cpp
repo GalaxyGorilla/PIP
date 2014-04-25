@@ -10,6 +10,8 @@ using namespace std;
 
 int main(int argc, char* argv[]) { 
 
+    mpf_set_default_prec(PREC);
+
     for (int i=1; i<4; i++){
 
         ostringstream case_polygon;
