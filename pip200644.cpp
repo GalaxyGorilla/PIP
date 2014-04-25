@@ -22,25 +22,15 @@ template <typename InputIterator>
 bool Polygon<InputIterator>::contains( const Point q ){
     iterator v = begin();
     iterator _end = end();
-    int wn = 0;
-    for( v; v != _end; ++v){
-
-        /* upward egde */
-        if ((*v).y() <= q.y()) {
-            if ((*(v+1)).y() > q.y())
-                if ( checkSide(q, *v, *(v+1)) < 0 )
-                    ++wn;
-        }
-
-        /* downward edge */
-        else { 
-            if ((*(v+1)).y() <= q.y())
-                if ( checkSide(q, *v, *(v+1)) > 0 )
-                    --wn;
-        }
-
+    int c = 0;
+    for ( v; v != _end; ++v){
+        Point v0 = *v;
+        Point v1 = *(v+1);
+        if ( ((v1.y() > q.y()) != (v0.y()>q.y())) 
+            && (q.x() < (v0.x()-v1.x()) * (q.y()-v1.y()) / (v0.y()-v1.y()) + v1.x()) )
+            c = !c;
     }
-    return ( wn != 0 );
+    return c;
 }
 
 }
