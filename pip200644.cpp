@@ -25,12 +25,14 @@ bool Polygon<InputIterator>::contains( const Point q ){
     int wn = 0;
     for( v; v != _end; ++v){
 
+        /* upward egde */
         if ((*v).y() <= q.y()) {
             if ((*(v+1)).y() > q.y())
                 if ( checkSide(q, *v, *(v+1)) < 0 )
                     ++wn;
         }
 
+        /* downward edge */
         else { 
             if ((*(v+1)).y() <= q.y())
                 if ( checkSide(q, *v, *(v+1)) > 0 )
