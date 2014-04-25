@@ -5,12 +5,12 @@ namespace N200644 {
 
 class Point {
 private:
-    double _x, _y;
+    long double _x, _y;
 public:
     Point() { _x = 0; _y = 0; }
-    Point(double x, double y) { _x = x; _y = y; }
-    double x() const {return _x;}
-    double y() const {return _y;}
+    Point(double x, double y) { _x = (long double) x; _y = (long double) y; }
+    long double x() const {return _x;}
+    long double y() const {return _y;}
 };
 
 template <typename InputIterator>

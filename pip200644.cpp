@@ -14,7 +14,7 @@ Polygon<InputIterator>::Polygon(InputIterator first, InputIterator last){
     points.push_back(first_elem);
 }
 
-inline double checkSide( const Point q, const Point head, const Point tail){
+inline long double checkSide( const Point q, const Point head, const Point tail){
     return ( (head.x()-tail.x())*(q.y()-tail.y()) - (q.x()-tail.x())*(head.y()-tail.y()) );
 }
 
