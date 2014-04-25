@@ -1,5 +1,4 @@
 #include <vector>
-#include <math.h> 
 
 namespace N200644 {
 
@@ -8,7 +7,7 @@ private:
     long double _x, _y;
 public:
     Point() { _x = 0; _y = 0; }
-    Point(double x, double y) { _x = (long double) x; _y = (long double) y; }
+    Point(double x, double y) { _x = x; _y = y; }
     long double x() const {return _x;}
     long double y() const {return _y;}
 };

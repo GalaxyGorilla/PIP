@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <stdlib.h> 
-#include <gmpxx.h>
 #include "pip200644.h"
 
 namespace N200644 {
