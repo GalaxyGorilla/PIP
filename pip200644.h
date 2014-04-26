@@ -23,7 +23,7 @@ public:
     iterator end() { return points.end(); }
 
     Polygon(InputIterator first, InputIterator last);
-    bool contains( const Point q ) ;
+    bool contains( const Point& q ) const;
 };
 
 }

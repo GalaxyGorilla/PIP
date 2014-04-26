@@ -20,23 +20,23 @@ inline long double checkSide( const Point q, const Point head, const Point tail)
 
 /* The winding number algorithm */
 template <typename InputIterator>
-bool Polygon<InputIterator>::contains( const Point q ){
-    iterator v = begin();
-    iterator v_end = end();
+bool Polygon<InputIterator>::contains( const Point& q ) const {
+    int size = points.size();
     int wn = 0;
-    for( v; v != v_end; ++v){
+    /* no vector iterators used here because of 'const' */
+    for( int i=0; i < size; ++i ){
 
         /* case: upward egde -> increment winding number */
-        if ((*v).y() <= q.y()) {
-            if ((*(v+1)).y() > q.y())
-                if ( checkSide(q, *v, *(v+1)) > 0 )
+        if (points[i].y() <= q.y()) {
+            if (points[i+1].y() > q.y())
+                if ( checkSide(q, points[i], points[i+1]) > 0 )
                     ++wn;
         }
 
         /* case: downward egde -> decrement winding number */
         else { 
-            if ((*(v+1)).y() <= q.y())
-                if ( checkSide(q, *v, *(v+1)) < 0 )
+            if (points[i+1].y() <= q.y())
+                if ( checkSide(q, points[i], points[i+1]) < 0 )
                     --wn;
         }
 
