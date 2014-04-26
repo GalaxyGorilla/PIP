@@ -26,7 +26,14 @@ public:
     bool contains( const Point& q ) const;
 };
 
+/* Check if a point is on the left (>0) or right (<0) side, based on the cross product.
+ * The result is exactly 0 when q is part of the line spanned by head and tail */  
+inline long double checkSide( const Point q, const Point head, const Point tail){
+    return ( (head.x()-tail.x())*(q.y()-tail.y()) - (q.x()-tail.x())*(head.y()-tail.y()) );
 }
+
+
+} //namespace N200644
 
 template <typename InputIterator>
 class K200644 {

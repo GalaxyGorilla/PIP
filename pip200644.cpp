@@ -12,12 +12,6 @@ Polygon<InputIterator>::Polygon(InputIterator first, InputIterator last){
     points[size-1] = first_elem;
 }
 
-/* Check if a point is on the left (>0) or right (<0) side, based on the cross product.
- * The result is exactly 0 when q is part of the line spanned head and tail */  
-inline long double checkSide( const Point q, const Point head, const Point tail){
-    return ( (head.x()-tail.x())*(q.y()-tail.y()) - (q.x()-tail.x())*(head.y()-tail.y()) );
-}
-
 /* The winding number algorithm */
 template <typename InputIterator>
 bool Polygon<InputIterator>::contains( const Point& q ) const {
