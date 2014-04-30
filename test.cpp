@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <fstream>
+#include <ctime>
 #include "PIP200644.cpp"
 
 using namespace std;
@@ -50,15 +51,18 @@ int main(int argc, char* argv[]) {
         vector<N200644::Point>::iterator query_iter = read_querypoints.begin();
         vector<bool>::iterator locations_iter = read_locations.begin();
         int counter = 0;
+        clock_t start = clock();
         for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter ){
             if (P.contains( *query_iter ) == *locations_iter)    
                 ++counter;
-            else
-                cout << (*query_iter).x() << " " << (*query_iter).y() << " " << *locations_iter << endl;
+            //else
+            //    cout << (*query_iter).x() << " " << (*query_iter).y() << " " << *locations_iter << endl;
             ++locations_iter;
         }
+        clock_t ends = clock();
 
-        cout << "Ergebnis: " << counter << " von " << read_querypoints.size() << " [" << ((double)counter)/read_querypoints.size() * 100 << "%]" << endl;
+        cout << "Ergebnis: " << counter << " von " << read_querypoints.size() << " [" << ((double)counter)/read_querypoints.size() * 100 << "%]" \
+            << " Running Time: " << (double) (ends - start) / CLOCKS_PER_SEC << endl;
 
     }
 
