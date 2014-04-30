@@ -23,6 +23,7 @@ public:
 
     template <typename InputIterator>
     Polygon(InputIterator first, InputIterator last);
+
     bool contains( const Point& q ) const;
 };
 
@@ -30,10 +31,11 @@ public:
 template <typename InputIterator>
 Polygon::Polygon(InputIterator first, InputIterator last){
     int size = std::distance(first, last) + 1;      //+1 for first element
-    points = std::vector<Point>(size);
+    points.reserve(size);
     Point first_elem = *first;
-    std::copy (first, last, points.begin());
-    points[size-1] = first_elem;
+    for(first; first!=last; ++first)
+        points.push_back(*first);
+    points.push_back(first_elem);
 }
 
 /* Check if a point is on the left (>0) or right (<0) side, based on the cross product.
