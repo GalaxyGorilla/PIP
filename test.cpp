@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
             read_querypoints.push_back(point);
         }
 
-        vector<int> read_locations;
+        vector<bool> read_locations;
         int result;
         while (infile_locations >> result){
             read_locations.push_back(result);
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
         K200644::Polygon P(read_polygon.begin(), read_polygon.end());
 
         vector<N200644::Point>::iterator query_iter = read_querypoints.begin();
-        vector<int>::iterator locations_iter = read_locations.begin();
+        vector<bool>::iterator locations_iter = read_locations.begin();
         int counter = 0;
         for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter ){
             if (P.contains( *query_iter ) == *locations_iter)    
