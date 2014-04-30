@@ -53,8 +53,8 @@ int main(int argc, char* argv[]) {
         for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter ){
             if (P.contains( *query_iter ) == *locations_iter)    
                 ++counter;
-            //else
-            //    cout << (*query_iter).x() << " " << (*query_iter).y() << " " << *locations_iter << endl;
+            else
+                cout << (*query_iter).x() << " " << (*query_iter).y() << " " << *locations_iter << endl;
             ++locations_iter;
         }
 

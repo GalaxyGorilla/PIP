@@ -45,6 +45,46 @@ bool Polygon::contains( const Point& q ) const {
         }
 
     }
+    if ( wn == 0 ){
+        for( int i=0; i < size; ++i ){
+
+            /* case: downward egde -> increment winding number */
+            if (points[i].x() <= q.x()) {
+                if (points[i+1].x() > q.x())
+                    if ( checkSide(q, points[i], points[i+1]) > 0 )
+                        ++wn;
+            }
+
+            /* case: upward egde -> decrement winding number */
+            else { 
+                if (points[i+1].x() <= q.x())
+                    if ( checkSide(q, points[i], points[i+1]) < 0 )
+                        --wn;
+            }
+
+        }
+
+    }
+    if ( wn == 0 ){
+        for( int i=0; i < size; ++i ){
+
+            /* case: downward egde -> increment winding number */
+            if (points[i].x() >= q.x()) {
+                if (points[i+1].x() < q.x())
+                    if ( checkSide(q, points[i], points[i+1]) > 0 )
+                        ++wn;
+            }
+
+            /* case: upward egde -> decrement winding number */
+            else { 
+                if (points[i+1].x() >= q.x())
+                    if ( checkSide(q, points[i], points[i+1]) < 0 )
+                        --wn;
+            }
+
+        }
+
+    }
 
     return ( wn != 0 );
 
