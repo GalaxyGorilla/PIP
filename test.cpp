@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
             read_locations.push_back(result);
         }
 
-        K200644<vector<N200644::Point>::iterator>::Polygon P(read_polygon.begin(), read_polygon.end());
+        K200644::Polygon P(read_polygon.begin(), read_polygon.end());
 
         vector<N200644::Point>::iterator query_iter = read_querypoints.begin();
         vector<int>::iterator locations_iter = read_locations.begin();

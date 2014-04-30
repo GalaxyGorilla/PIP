@@ -2,19 +2,8 @@
 
 namespace N200644 {
 
-/* polygon constructor */
-template <typename InputIterator>
-Polygon<InputIterator>::Polygon(InputIterator first, InputIterator last){
-    int size = std::distance(first, last) + 1;      //+1 for first element
-    points = std::vector<Point>(size);
-    Point first_elem = *first;
-    std::copy (first, last, points.begin());
-    points[size-1] = first_elem;
-}
-
 /* The winding number algorithm */
-template <typename InputIterator>
-bool Polygon<InputIterator>::contains( const Point& q ) const {
+bool Polygon::contains( const Point& q ) const {
     int size = points.size();
     int wn = 0;
     /* no vector iterators used here because of 'const' */

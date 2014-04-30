@@ -12,7 +12,6 @@ public:
     long double y() const {return _y;}
 };
 
-template <typename InputIterator>
 class Polygon {
 private:
     typedef std::vector<Point> Points;
@@ -22,9 +21,20 @@ public:
     iterator begin() { return points.begin(); }
     iterator end() { return points.end(); }
 
+    template <typename InputIterator>
     Polygon(InputIterator first, InputIterator last);
     bool contains( const Point& q ) const;
 };
+
+/* polygon constructor */
+template <typename InputIterator>
+Polygon::Polygon(InputIterator first, InputIterator last){
+    int size = std::distance(first, last) + 1;      //+1 for first element
+    points = std::vector<Point>(size);
+    Point first_elem = *first;
+    std::copy (first, last, points.begin());
+    points[size-1] = first_elem;
+}
 
 /* Check if a point is on the left (>0) or right (<0) side, based on the cross product.
  * The result is exactly 0 when q is part of the line spanned by head and tail */  
@@ -35,10 +45,9 @@ inline long double checkSide( const Point q, const Point head, const Point tail)
 
 } //namespace N200644
 
-template <typename InputIterator>
 class K200644 {
 public:
     typedef N200644::Point Point;
-    typedef N200644::Polygon<InputIterator> Polygon;
+    typedef N200644::Polygon Polygon;
 };
 
