@@ -10,8 +10,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) { 
 
-    cout.precision(25);
-
+    cout.precision(4);
 
     for (int i=1; i<4; i++){
 
