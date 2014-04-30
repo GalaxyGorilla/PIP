@@ -10,6 +10,9 @@ using namespace std;
 
 int main(int argc, char* argv[]) { 
 
+    cout.precision(25);
+
+
     for (int i=1; i<4; i++){
 
         ostringstream case_polygon;
@@ -51,6 +54,8 @@ int main(int argc, char* argv[]) {
         for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter ){
             if (P.contains( *query_iter ) == *locations_iter)    
                 ++counter;
+            //else
+            //    cout << (*query_iter).x() << " " << (*query_iter).y() << " " << *locations_iter << endl;
             ++locations_iter;
         }
 
