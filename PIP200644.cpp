@@ -4,7 +4,7 @@ namespace N200644 {
 
 /* The winding number algorithm */
 bool Polygon::contains( const Point& q ) const {
-    int size = points.size();
+    int size = points.size() - 1;
     int wn = 0, i;
     /* line to the right */
     for( i=0; i < size; ++i ){
