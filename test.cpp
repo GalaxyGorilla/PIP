@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
     positive.open("positive.txt");
     negative.open("negative.txt");
 
-    for (int i=1; i<2; i++){
+    for (int i=1; i<4; i++){
 
         ostringstream case_polygon;
         ostringstream case_querypoints;
