@@ -12,8 +12,12 @@ using namespace std;
 int main(int argc, char* argv[]) { 
 
     cout.precision(4);
+    ofstream positive;
+    ofstream negative;
+    positive.open("positive.txt");
+    negative.open("negative.txt");
 
-    for (int i=1; i<4; i++){
+    for (int i=1; i<2; i++){
 
         ostringstream case_polygon;
         ostringstream case_querypoints;
@@ -53,7 +57,13 @@ int main(int argc, char* argv[]) {
         int counter = 0;
         clock_t start = clock();
         for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter, ++locations_iter ){
-            if (P.contains( *query_iter ) == *locations_iter)    
+            bool result = P.contains(*query_iter);;
+            if( result )
+                positive << (*query_iter).x() << " " << (*query_iter).y() << endl;
+            else
+                negative << (*query_iter).x() << " " << (*query_iter).y() << endl;
+
+            if (result == *locations_iter)
                 ++counter;
             //else
             //    cout << (*query_iter).x() << " " << (*query_iter).y() << " " << *locations_iter << endl;
