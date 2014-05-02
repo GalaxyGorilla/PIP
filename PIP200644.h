@@ -1,16 +1,16 @@
 #include <vector>
-#include <gmpxx.h>
+#include <quadmath.h>
 
 namespace N200644 {
 
 class Point {
 private:
-    mpf_class _x, _y;
+    __float128 _x, _y;
 public:
     Point() { _x = 0; _y = 0; }
     Point(double x, double y) { _x = x; _y = y; }
-    mpf_class x() const {return _x;}
-    mpf_class y() const {return _y;}
+    __float128 x() const {return _x;}
+    __float128 y() const {return _y;}
 };
 
 class Polygon {
@@ -41,7 +41,7 @@ Polygon::Polygon(InputIterator first, InputIterator last){
 
 /* Check if a point is on the left (>0) or right (<0) side, based on the cross product.
  * The result is exactly 0 when q is part of the line spanned by head and tail */  
-inline mpf_class checkSide( const Point q, const Point head, const Point tail){
+inline __float128 checkSide( const Point q, const Point head, const Point tail){
     return ( (head.x()-tail.x())*(q.y()-tail.y()) - (q.x()-tail.x())*(head.y()-tail.y()) );
 }
 

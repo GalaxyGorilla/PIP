@@ -58,10 +58,10 @@ int main(int argc, char* argv[]) {
         clock_t start = clock();
         for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter, ++locations_iter ){
             bool result = P.contains(*query_iter);;
-            if( result )
-                positive << (*query_iter).x() << " " << (*query_iter).y() << endl;
-            else
-                negative << (*query_iter).x() << " " << (*query_iter).y() << endl;
+            //if( result )
+            //    positive << (*query_iter).x() << " " << (*query_iter).y() << endl;
+            //else
+            //    negative << (*query_iter).x() << " " << (*query_iter).y() << endl;
 
             if (result == *locations_iter)
                 ++counter;
