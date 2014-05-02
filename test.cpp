@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
         }
 
         vector<bool> read_locations;
-        int result;
+        bool result;
         while (infile_locations >> result){
             read_locations.push_back(result);
         }
@@ -52,12 +52,11 @@ int main(int argc, char* argv[]) {
         vector<bool>::iterator locations_iter = read_locations.begin();
         int counter = 0;
         clock_t start = clock();
-        for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter ){
+        for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter, ++locations_iter ){
             if (P.contains( *query_iter ) == *locations_iter)    
                 ++counter;
             //else
             //    cout << (*query_iter).x() << " " << (*query_iter).y() << " " << *locations_iter << endl;
-            ++locations_iter;
         }
         clock_t ends = clock();
 
