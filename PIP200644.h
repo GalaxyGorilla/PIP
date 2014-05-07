@@ -1,6 +1,8 @@
 #include <vector>
 #include <gmpxx.h>
 
+#define PREC 512
+
 namespace N200644 {
 
 class Point {
@@ -31,6 +33,7 @@ public:
 /* polygon constructor */
 template <typename InputIterator>
 Polygon::Polygon(InputIterator first, InputIterator last){
+    mpf_set_default_prec (PREC);
     int size = std::distance(first, last) + 1;      //+1 for first element
     points.reserve(size);
     Point first_elem = *first;
