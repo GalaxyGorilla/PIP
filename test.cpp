@@ -14,8 +14,15 @@ int main(int argc, char* argv[]) {
     cout.precision(4);
     ofstream positive;
     ofstream negative;
+    ofstream wrong;
     positive.open("positive.txt");
     negative.open("negative.txt");
+    wrong.open("wrong.txt");
+
+    int prec = 20;
+    int width = 46;
+    char bufx[128];
+    char bufy[128];
 
     for (int i=1; i<4; i++){
 
@@ -57,16 +64,21 @@ int main(int argc, char* argv[]) {
         int counter = 0;
         clock_t start = clock();
         for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter, ++locations_iter ){
-            bool result = P.contains(*query_iter);;
-            //if( result )
-            //    positive << (*query_iter).x() << " " << (*query_iter).y() << endl;
-            //else
-            //    negative << (*query_iter).x() << " " << (*query_iter).y() << endl;
 
+            //quadmath_snprintf (bufx, sizeof bufx, "%+-#*.20Qe", width, (*query_iter).x());
+            //quadmath_snprintf (bufy, sizeof bufy, "%+-#*.20Qe", width, (*query_iter).y());
+
+            bool result = P.contains(*query_iter);;
             if (result == *locations_iter)
                 ++counter;
             //else
-            //    cout << (*query_iter).x() << " " << (*query_iter).y() << " " << *locations_iter << endl;
+            //    wrong << string(bufx) << " " << string(bufy) << endl;
+
+            //if( result )
+            //    positive << string(bufx) << " " << string(bufy) << endl;
+            //else
+            //    negative << string(bufx) << " " << string(bufy) << endl;
+
         }
         clock_t ends = clock();
 
@@ -76,5 +88,5 @@ int main(int argc, char* argv[]) {
     }
 
     return 0;
-       
+
 }
