@@ -68,7 +68,7 @@ int main(int argc, char* argv[]) {
             //quadmath_snprintf (bufx, sizeof bufx, "%+-#*.20Qe", width, (*query_iter).x());
             //quadmath_snprintf (bufy, sizeof bufy, "%+-#*.20Qe", width, (*query_iter).y());
 
-            bool result = P.contains(*query_iter);;
+            bool result = P.contains(*query_iter);
             if (result == *locations_iter)
                 ++counter;
             //else
