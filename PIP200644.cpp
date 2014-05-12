@@ -2,6 +2,8 @@
 
 namespace N200644 {
 
+long _200644_DEFAULT_PREC = mpf_get_default_prec ();
+
 /* The winding number algorithm */
 bool Polygon::contains( const Point& q ) const {
     int size = points.size() - 1;
@@ -63,5 +65,10 @@ bool Polygon::contains( const Point& q ) const {
     return ( wn != 0 );
 
 }
+
+Polygon::~Polygon(){
+    mpf_set_default_prec ( _200644_DEFAULT_PREC );
+}
+
 
 } // namespace N200644

@@ -5,8 +5,6 @@
 
 namespace N200644 {
 
-long _200644_DEFAULT_PREC = mpf_get_default_prec ();
-
 class Point {
 private:
     mpf_class _x, _y;
@@ -40,13 +38,9 @@ Polygon::Polygon(InputIterator first, InputIterator last){
     int size = std::distance(first, last) + 1;      //+1 for first element
     points.reserve(size);
     Point first_elem = *first;
-    for(first; first!=last; ++first)
+    for(; first!=last; ++first)
         points.push_back(*first);
     points.push_back(first_elem);
-}
-
-Polygon::~Polygon(){
-    mpf_set_default_prec ( _200644_DEFAULT_PREC );
 }
 
 /* Check if a point is on the left (>0) or right (<0) side, based on the cross product.

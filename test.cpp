@@ -5,11 +5,11 @@
 #include <string>
 #include <fstream>
 #include <ctime>
-#include "PIP200644.cpp"
+#include "PIP200644.h"
 
 using namespace std;
 
-int main(int argc, char* argv[]) { 
+int main() { 
 
     cout.precision(4);
     ofstream positive;
@@ -19,10 +19,10 @@ int main(int argc, char* argv[]) {
 //    negative.open("negative.txt");
 //    wrong.open("wrong.txt");
 //
-    int prec = 20;
-    int width = 46;
-    char bufx[128];
-    char bufy[128];
+//    int prec = 20;
+//    int width = 46;
+//    char bufx[128];
+//    char bufy[128];
 
     for (int i=1; i<4; i++){
 
@@ -63,10 +63,7 @@ int main(int argc, char* argv[]) {
         vector<bool>::iterator locations_iter = read_locations.begin();
         int counter = 0;
         clock_t start = clock();
-        for( query_iter ; query_iter != read_querypoints.end() ; ++query_iter, ++locations_iter ){
-
-            //quadmath_snprintf (bufx, sizeof bufx, "%+-#*.20Qe", width, (*query_iter).x());
-            //quadmath_snprintf (bufy, sizeof bufy, "%+-#*.20Qe", width, (*query_iter).y());
+        for( ; query_iter != read_querypoints.end() ; ++query_iter, ++locations_iter ){
 
             bool result = P.contains(*query_iter);
             if (result == *locations_iter)
