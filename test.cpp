@@ -15,10 +15,10 @@ int main(int argc, char* argv[]) {
     ofstream positive;
     ofstream negative;
     ofstream wrong;
-    positive.open("positive.txt");
-    negative.open("negative.txt");
-    wrong.open("wrong.txt");
-
+//    positive.open("positive.txt");
+//    negative.open("negative.txt");
+//    wrong.open("wrong.txt");
+//
     int prec = 20;
     int width = 46;
     char bufx[128];
