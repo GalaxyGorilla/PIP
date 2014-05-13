@@ -29,9 +29,9 @@ int main() {
         ostringstream case_polygon;
         ostringstream case_querypoints;
         ostringstream case_locations;
-        case_polygon << i << "_polygon.txt";
-        case_querypoints << i << "_querypoints.txt";
-        case_locations << i << "_locations.txt";
+        case_polygon << "testcases/" << i << "_polygon.txt";
+        case_querypoints << "testcases/" << i << "_querypoints.txt";
+        case_locations << "testcases/" << i << "_locations.txt";
 
         ifstream infile_polygon(case_polygon.str().c_str());
         ifstream infile_querypoints(case_querypoints.str().c_str());

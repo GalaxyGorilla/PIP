@@ -11,8 +11,10 @@ private:
 public:
     Point() { _x = 0; _y = 0; }
     Point(double x, double y) { _x = x; _y = y; }
-    mpf_class x() const {return _x;}
-    mpf_class y() const {return _y;}
+    mpf_class getx() const {return _x;}
+    mpf_class gety() const {return _y;}
+    double x() const {return _x.get_d();}
+    double y() const {return _y.get_d();}
 };
 
 class Polygon {
@@ -46,7 +48,7 @@ Polygon::Polygon(InputIterator first, InputIterator last){
 /* Check if a point is on the left (>0) or right (<0) side, based on the cross product.
  * The result is exactly 0 when q is part of the line spanned by head and tail */  
 inline mpf_class checkSide( const Point q, const Point head, const Point tail){
-    return ( (head.x()-tail.x())*(q.y()-tail.y()) - (q.x()-tail.x())*(head.y()-tail.y()) );
+    return ( (head.getx()-tail.getx())*(q.gety()-tail.gety()) - (q.getx()-tail.getx())*(head.gety()-tail.gety()) );
 }
 
 

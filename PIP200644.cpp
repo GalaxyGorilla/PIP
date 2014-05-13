@@ -11,13 +11,13 @@ bool Polygon::contains( const Point& q ) const {
     /* line to the right */
     for( i=0; i < size; ++i ){
         /* case: upward egde -> increment winding number */
-        if (points[i].y() <= q.y()) {
-            if (points[i+1].y() > q.y()
+        if (points[i].gety() <= q.gety()) {
+            if (points[i+1].gety() > q.gety()
                 && checkSide(q, points[i], points[i+1]) > 0 )
                     ++wn;
         }
         /* case: downward egde -> decrement winding number */
-        else if (points[i+1].y() <= q.y()
+        else if (points[i+1].gety() <= q.gety()
             && checkSide(q, points[i], points[i+1]) < 0 )
                 --wn;
     }
@@ -30,34 +30,34 @@ bool Polygon::contains( const Point& q ) const {
 
     if ( wn == 0 ) /* line to the left */
     for( i=0; i < size; ++i ){
-        if (points[i].y() >= q.y()) {
-            if (points[i+1].y() < q.y()
+        if (points[i].gety() >= q.gety()) {
+            if (points[i+1].gety() < q.gety()
                 && checkSide(q, points[i], points[i+1]) > 0 )
                 ++wn;
         }
-        else if (points[i+1].y() >= q.y()
+        else if (points[i+1].gety() >= q.gety()
             && checkSide(q, points[i], points[i+1]) < 0 )
             --wn;
     }
     if ( wn == 0 ) /* line downwards */
     for( i=0; i < size; ++i ){
-        if (points[i].x() <= q.x()) {
-            if (points[i+1].x() > q.x()
+        if (points[i].getx() <= q.getx()) {
+            if (points[i+1].getx() > q.getx()
                 && checkSide(q, points[i], points[i+1]) > 0 )
                     ++wn;
         }
-        else if ( points[i+1].x() <= q.x()
+        else if ( points[i+1].getx() <= q.getx()
             && checkSide(q, points[i], points[i+1]) < 0 )
             --wn;
     }
     if ( wn == 0 ) /* line upwards */
     for( i=0; i < size; ++i ){
-        if (points[i].x() >= q.x()) {
-            if (points[i+1].x() < q.x()
+        if (points[i].getx() >= q.getx()) {
+            if (points[i+1].getx() < q.getx()
                 && checkSide(q, points[i], points[i+1]) > 0 )
                 ++wn;
         }
-        else if (points[i+1].x() >= q.x()
+        else if (points[i+1].getx() >= q.getx()
             && checkSide(q, points[i], points[i+1]) < 0 )
             --wn;
     }
