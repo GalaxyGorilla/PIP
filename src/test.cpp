@@ -7,6 +7,7 @@
 #include <ctime>
 #include "PIP200644.h"
 
+#define PLOTTING 0
 #define N_TESTCASES 6
 
 using namespace std;
@@ -58,9 +59,9 @@ int main(int argc, char *argv[]) {
         }
 
         vector<bool> read_locations;
-        bool result;
-        while (infile_locations >> result){
-            read_locations.push_back(result);
+        bool loc_result;
+        while (infile_locations >> loc_result){
+            read_locations.push_back(loc_result);
         }
 
         K200644::Polygon P(read_polygon.begin(), read_polygon.end());
@@ -72,19 +73,23 @@ int main(int argc, char *argv[]) {
         vector<N200644::Point>::iterator query_iter = read_querypoints.begin();
         vector<bool>::iterator locations_iter = read_locations.begin();
         int counter = 0;
+        bool result;
         clock_t start = clock();
         for( ; query_iter != read_querypoints.end() ; ++query_iter, ++locations_iter ){
 
-            bool result = P.contains(*query_iter);
+            result = P.contains(*query_iter);
             if (result == *locations_iter)
                 ++counter;
-            else
-                wrong << (*query_iter).x() << " " << (*query_iter).y() << endl;
 
-            if( result )
-                positive << (*query_iter).x() << " " << (*query_iter).y() << endl;
-            else
-                negative << (*query_iter).x() << " " << (*query_iter).y() << endl;
+            if(PLOTTING){
+                if (result != *locations_iter) 
+                    wrong << (*query_iter).x() << " " << (*query_iter).y() << endl; 
+                if( result ) 
+                    positive << (*query_iter).x() << " " << (*query_iter).y() << endl; 
+                else 
+                    negative << (*query_iter).x() << " " << (*query_iter).y() << endl; 
+            }
+
 
         }
         clock_t ends = clock();

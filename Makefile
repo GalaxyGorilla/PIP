@@ -4,7 +4,7 @@ LDFLAGS=
 SRCDIR=./src/
 SOURCES=$(addprefix $(SRCDIR), test.cpp PIP200644.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=pip
+EXECUTABLE=benchmark
 
 all: $(SOURCES) $(EXECUTABLE) clean_after
 
