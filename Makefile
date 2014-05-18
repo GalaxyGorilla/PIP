@@ -1,9 +1,10 @@
-CC=g++
+CC=g++ 
 CFLAGS=-c -O2 -Wall -Wextra -pedantic
 LDFLAGS= 
-SOURCES=test.cpp PIP200644.cpp
+SRCDIR=./src/
+SOURCES=$(addprefix $(SRCDIR), test.cpp PIP200644.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=test
+EXECUTABLE=pip
 
 all: $(SOURCES) $(EXECUTABLE) clean_after
 
