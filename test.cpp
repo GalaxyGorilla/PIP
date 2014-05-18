@@ -7,24 +7,30 @@
 #include <ctime>
 #include "PIP200644.h"
 
+#define N_TESTCASES 6
+
 using namespace std;
 
-int main() { 
+int main(int argc, char *argv[]) { 
+    
+    int case_index = N_TESTCASES;
+    int start_case = 1;
+    if (argc == 2){
+        case_index = atoi(argv[1]);
+        start_case = case_index;
+    }
 
     cout.precision(4);
     ofstream positive;
     ofstream negative;
     ofstream wrong;
-//    positive.open("positive.txt");
-//    negative.open("negative.txt");
-//    wrong.open("wrong.txt");
-//
-//    int prec = 20;
-//    int width = 46;
-//    char bufx[128];
-//    char bufy[128];
+    ofstream polygonfile;
+    positive.open("./plotting/positive.txt");
+    negative.open("./plotting/negative.txt");
+    wrong.open("./plotting/wrong.txt");
+    polygonfile.open("./plotting/polygon.txt");
 
-    for (int i=1; i<7; i++){
+    for (int i=start_case; i<=case_index; i++){
 
         ostringstream case_polygon;
         ostringstream case_querypoints;
@@ -58,6 +64,10 @@ int main() {
         }
 
         K200644::Polygon P(read_polygon.begin(), read_polygon.end());
+        K200644::Polygon::iterator first = P.begin();
+        K200644::Polygon::iterator last = P.end();
+        for(; first!=last; ++first)
+            polygonfile << (*first).x() << " " << (*first).y() << endl;
 
         vector<N200644::Point>::iterator query_iter = read_querypoints.begin();
         vector<bool>::iterator locations_iter = read_locations.begin();
@@ -68,13 +78,13 @@ int main() {
             bool result = P.contains(*query_iter);
             if (result == *locations_iter)
                 ++counter;
-            //else
-            //    wrong << string(bufx) << " " << string(bufy) << endl;
+            else
+                wrong << (*query_iter).x() << " " << (*query_iter).y() << endl;
 
-            //if( result )
-            //    positive << string(bufx) << " " << string(bufy) << endl;
-            //else
-            //    negative << string(bufx) << " " << string(bufy) << endl;
+            if( result )
+                positive << (*query_iter).x() << " " << (*query_iter).y() << endl;
+            else
+                negative << (*query_iter).x() << " " << (*query_iter).y() << endl;
 
         }
         clock_t ends = clock();
