@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=-c -O2 -Wall -Wextra -pedantic
-LDFLAGS=-lgmpxx -lgmp 
+LDFLAGS= 
 SOURCES=test.cpp PIP200644.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=test
