@@ -24,7 +24,7 @@ int main() {
 //    char bufx[128];
 //    char bufy[128];
 
-    for (int i=1; i<4; i++){
+    for (int i=1; i<7; i++){
 
         ostringstream case_polygon;
         ostringstream case_querypoints;
