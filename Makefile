@@ -1,6 +1,6 @@
 CC=g++ 
 CFLAGS=-c -O2 -Wall -Wextra -pedantic
-LDFLAGS=-lgmpxx -lgmp
+LDFLAGS=
 SRCDIR=./src/
 SOURCES=$(addprefix $(SRCDIR), test.cpp PIP200644.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)

@@ -7,7 +7,7 @@
 #include <ctime>
 #include "PIP200644.h"
 
-#define PLOTTING 0
+#define PLOTTING 1
 #define N_TESTCASES 6
 
 using namespace std;
@@ -24,11 +24,11 @@ int main(int argc, char *argv[]) {
     cout.precision(4);
     ofstream positive;
     ofstream negative;
-    ofstream wrong;
+    ofstream ok;
     ofstream polygonfile;
     positive.open("./plotting/positive.txt");
     negative.open("./plotting/negative.txt");
-    wrong.open("./plotting/wrong.txt");
+    ok.open("./plotting/ok.txt");
     polygonfile.open("./plotting/polygon.txt");
 
     for (int i=start_case; i<=case_index; i++){
@@ -82,12 +82,12 @@ int main(int argc, char *argv[]) {
                 ++counter;
 
             if(PLOTTING){
-                if (result != *locations_iter) 
-                    wrong << (*query_iter).x() << " " << (*query_iter).y() << endl; 
-                if( result ) 
+                if (result != *locations_iter && result) 
                     positive << (*query_iter).x() << " " << (*query_iter).y() << endl; 
-                else 
+                else if(result != *locations_iter && !result) 
                     negative << (*query_iter).x() << " " << (*query_iter).y() << endl; 
+                else 
+                    ok << (*query_iter).x() << " " << (*query_iter).y() << endl; 
             }
 
 
