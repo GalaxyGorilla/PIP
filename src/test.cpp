@@ -94,8 +94,9 @@ int main(int argc, char *argv[]) {
         }
         clock_t ends = clock();
 
-        cout << "Result: " << counter << " / " << read_querypoints.size() << " [" << ((double)counter)/read_querypoints.size() * 100 << "%]" \
-            << " in " << (double) (ends - start) / CLOCKS_PER_SEC << " secs" << endl;
+        cout << i << ". " << counter << " / " << read_querypoints.size() << " ["    \
+            << ((double)counter)/read_querypoints.size() * 100 << "%]"              \
+            << " in " << (double) (ends - start) / CLOCKS_PER_SEC << "s" << endl;
 
     }
 
