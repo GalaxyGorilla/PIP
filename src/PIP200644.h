@@ -43,7 +43,8 @@ Polygon::Polygon(InputIterator first, InputIterator last){
 /* Check if a point is on the left (>0) or right (<0) side, based on the cross product.
  * The result is exactly 0 when q is part of the line spanned by head and tail */  
 inline double checkSide( const Point q, const Point head, const Point tail){
-    return ( (head.getx()-tail.getx())*(q.gety()-tail.gety()) - (q.getx()-tail.getx())*(head.gety()-tail.gety()) );
+    return ( (head.getx()-tail.getx())*(q.gety()-tail.gety()) \
+            - (q.getx()-tail.getx())*(head.gety()-tail.gety()) );
 }
 
 
