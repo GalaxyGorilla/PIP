@@ -10,6 +10,8 @@
 #define PLOTTING 1
 #define N_TESTCASES 6
 
+#define PRINT_BUFFER(buffer,point) buffer << (*point).x() << " " << (*point).y() << endl; 
+
 using namespace std;
 
 int main(int argc, char *argv[]) { 
@@ -68,7 +70,7 @@ int main(int argc, char *argv[]) {
         K200644::Polygon::iterator first = P.begin();
         K200644::Polygon::iterator last = P.end();
         for(; first!=last; ++first)
-            polygonfile << (*first).x() << " " << (*first).y() << endl;
+            PRINT_BUFFER(polygonfile, first)
 
         vector<N200644::Point>::iterator query_iter = read_querypoints.begin();
         vector<bool>::iterator locations_iter = read_locations.begin();
@@ -83,11 +85,11 @@ int main(int argc, char *argv[]) {
 
             if(PLOTTING){
                 if (result != *locations_iter && result) 
-                    positive << (*query_iter).x() << " " << (*query_iter).y() << endl; 
+                    PRINT_BUFFER(positive, query_iter)
                 else if(result != *locations_iter && !result) 
-                    negative << (*query_iter).x() << " " << (*query_iter).y() << endl; 
+                    PRINT_BUFFER(negative, query_iter)
                 else 
-                    ok << (*query_iter).x() << " " << (*query_iter).y() << endl; 
+                    PRINT_BUFFER(ok, query_iter)
             }
 
 
