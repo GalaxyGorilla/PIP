@@ -4,6 +4,14 @@ namespace N200644 {
 
 /* The winding number algorithm */
 bool Polygon::contains( const Point& q ) const {
+
+    /* bounding box */
+    if (q.getx() < xmin
+        || q.getx() > xmax
+        || q.gety() < ymin
+        || q.gety() > ymax)
+        return 0;
+
     int size = points.size() - 1;
     int wn = 0, i;
     /* line to the right */

@@ -27,6 +27,9 @@ public:
     Polygon(InputIterator first, InputIterator last);
 
     bool contains( const Point& q ) const;
+
+    double xmin, xmax;
+    double ymin, ymax;
 };
 
 /* polygon constructor */
@@ -35,8 +38,15 @@ Polygon::Polygon(InputIterator first, InputIterator last){
     int size = std::distance(first, last) + 1;      //+1 for first element
     points.reserve(size);
     Point first_elem = *first;
-    for(; first!=last; ++first)
+    xmin=first_elem.x(); xmax=first_elem.x();
+    ymin=first_elem.y(); ymax=first_elem.y();
+    for(; first!=last; ++first){
         points.push_back(*first);
+        xmin = xmin>(*first).x() ? (*first).x() : xmin;
+        xmax = xmax<(*first).x() ? (*first).x() : xmax;
+        ymin = ymin>(*first).y() ? (*first).y() : ymin;
+        ymax = ymax<(*first).y() ? (*first).y() : ymax;
+    }
     points.push_back(first_elem);
 }
 
