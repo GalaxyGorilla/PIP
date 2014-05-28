@@ -7,7 +7,7 @@
 #include <ctime>
 #include "PIP200644.h"
 
-#define PLOTTING 1
+#define PLOTTING 0
 #define N_TESTCASES 6
 
 #define PRINT_BUFFER(buffer,point) buffer << (*point).x() << " " << (*point).y() << endl; 
@@ -28,10 +28,13 @@ int main(int argc, char *argv[]) {
     ofstream negative;
     ofstream ok;
     ofstream polygonfile;
-    positive.open("./plotting/positive.txt");
-    negative.open("./plotting/negative.txt");
-    ok.open("./plotting/ok.txt");
-    polygonfile.open("./plotting/polygon.txt");
+
+    if(PLOTTING){
+        positive.open("./plotting/positive.txt");
+        negative.open("./plotting/negative.txt");
+        ok.open("./plotting/ok.txt");
+        polygonfile.open("./plotting/polygon.txt");
+    }
 
     for (int i=start_case; i<=case_index; i++){
 
