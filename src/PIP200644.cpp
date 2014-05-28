@@ -8,6 +8,10 @@ bool Polygon::contains( const Point& q ) const {
     int wn = 0, i;
     /* line to the right */
     for( i=0; i < size; ++i ){
+        if (points[i].getx() == q.getx()
+            && points[i].gety() == q.gety())
+            return 1;
+        
         /* case: upward egde -> increment winding number */
         if (points[i].gety() <= q.gety()) {
             if (points[i+1].gety() > q.gety()
