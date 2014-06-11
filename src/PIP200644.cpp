@@ -49,28 +49,6 @@ bool Polygon::contains( const Point& q ) const {
             && checkSide(q, points[i], points[i+1]) < 0 )
             --wn;
     }
-    if ( wn == 0 ) /* line downwards */
-    for( i=0; i < size; ++i ){
-        if (points[i].getx() <= q.getx()) {
-            if (points[i+1].getx() > q.getx()
-                && checkSide(q, points[i], points[i+1]) > 0 )
-                ++wn;
-        }
-        else if ( points[i+1].getx() <= q.getx()
-            && checkSide(q, points[i], points[i+1]) < 0 )
-            --wn;
-    }
-    if ( wn == 0 ) /* line upwards */
-    for( i=0; i < size; ++i ){
-        if (points[i].getx() >= q.getx()) {
-            if (points[i+1].getx() < q.getx()
-                && checkSide(q, points[i], points[i+1]) > 0 )
-                ++wn;
-        }
-        else if (points[i+1].getx() >= q.getx()
-            && checkSide(q, points[i], points[i+1]) < 0 )
-            --wn;
-    }
 
     return ( wn != 0 );
 
