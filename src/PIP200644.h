@@ -63,8 +63,8 @@ inline double checkSide( const Point q, const Point head, const Point tail){
         long double heady = head.gety();
         long double tailx = tail.getx();
         long double taily = tail.gety();
-        return ((headx-tailx)*(qy-taily) \
-               - (qx-tailx)*(heady-taily) );
+        return (double) ((headx-tailx)*(qy-taily) \
+                        - (qx-tailx)*(heady-taily) );
     }
     else
         return result;
