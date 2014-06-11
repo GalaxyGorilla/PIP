@@ -56,7 +56,7 @@ Polygon::Polygon(InputIterator first, InputIterator last){
 inline double checkSide( const Point q, const Point head, const Point tail){
     double result = ( (head.getx()-tail.getx())*(q.gety()-tail.gety()) \
                     - (q.getx()-tail.getx())*(head.gety()-tail.gety()) );
-    if( fabs(result) < 0.0000000001 ){
+    if( fabs(result) < 0.00001 ){
         long double qx = q.getx();
         long double qy = q.gety();
         long double headx = head.getx();
