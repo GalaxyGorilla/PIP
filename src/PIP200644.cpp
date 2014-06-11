@@ -24,12 +24,12 @@ bool Polygon::contains( const Point& q ) const {
         if (points[i].gety() <= q.gety()) {
             if (points[i+1].gety() > q.gety()
                 && checkSide(q, points[i], points[i+1]) > 0 )
-                    ++wn;
+                ++wn;
         }
         /* case: downward egde -> decrement winding number */
         else if (points[i+1].gety() <= q.gety()
             && checkSide(q, points[i], points[i+1]) < 0 )
-                --wn;
+            --wn;
     }
 
     /* 
@@ -54,7 +54,7 @@ bool Polygon::contains( const Point& q ) const {
         if (points[i].getx() <= q.getx()) {
             if (points[i+1].getx() > q.getx()
                 && checkSide(q, points[i], points[i+1]) > 0 )
-                    ++wn;
+                ++wn;
         }
         else if ( points[i+1].getx() <= q.getx()
             && checkSide(q, points[i], points[i+1]) < 0 )
