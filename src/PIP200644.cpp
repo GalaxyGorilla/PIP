@@ -28,9 +28,10 @@ bool Polygon::contains( const Point& q ) const {
             }
         }
         /* case: downward egde -> decrement winding number */
-        else if( points[i+1].gety() <= q.gety()
-            && checkSide(q, points[i], points[i+1]) < 0 )
+        else if( points[i+1].gety() <= q.gety() ){
+            if( checkSide(q, points[i], points[i+1]) < 0 )
             --wn;
+        }
     }
 
     /* 
@@ -46,9 +47,10 @@ bool Polygon::contains( const Point& q ) const {
                 ++wn;
             }
         }
-        else if( points[i+1].gety() >= q.gety()
-            && checkSide(q, points[i], points[i+1]) < 0 )
+        else if( points[i+1].gety() >= q.gety() ){
+            if( checkSide(q, points[i], points[i+1]) < 0 )
             --wn;
+        }
     }
 
     return ( wn != 0 );
